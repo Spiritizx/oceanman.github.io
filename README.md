@@ -19,7 +19,7 @@
 
 <div id="main">
 <h2>Home page</h2>
-<p>This website is to show you our progress of our EA Project: Oceanman</p>
+<p>This website is to show you the progress of our EA Project: Oceanman</p>
 <p>As of 17 October 2018 we have been given our project theme; water and have to learn html as our assignment</p>
 <p>The ideation progress will be updated soon</p>
 </div>
