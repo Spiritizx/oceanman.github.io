@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>Oceanman</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+<div id="container">
+<div id="header">
+<h1>Year 2 Sem 2 EA Project</h1>
+</div>
+<div id="content">
+<div id="nav">
+<h3>Navigation</h3>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="">About</a></li>
+<li><a href="Contacts.html">Contact</a></li>
+</ul>
+</div>
+
+<div id="main">
+<h2>About</h2>
+
+<h3>Brainstorming and Ideation</h3>
+
+<p>Idea 1</p>
+<img src="idea1.jpg" width="800" height="800">
+
+<p>Idea 2</p>
+
+<p>Idea 3</p>
+
+<p>Idea 4</p>
+
+</div>
+</div>
+<div>
+<div id="footer">
+Copyright &copy; 2018 Oceanman
+</div>
+</body>
+</html>
