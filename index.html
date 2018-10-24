@@ -38,6 +38,10 @@
 <p>phone no.: 98345330</p>
 <p>email: czlee.17@ichat.sp.edu.sg</p>
 
+<img src="linjie.jpg" width="104" height="142"> <p>Weng Lin Jie</p>
+<p>phone no.: 98281696</p>
+<p>email: linjie.17@ichat.sp.edu.sg</p>
+
 </div>
 </div>
 <div>
