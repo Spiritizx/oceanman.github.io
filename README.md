@@ -24,27 +24,7 @@
 <p>As of 17 October 2018 we have been given our project theme; water, and have to learn html as our assignment</p>
 <p>The ideation progress will be updated soon</p>
 
-<h3>Contacts</h3>
 
-<img src="jason.jpg" width="104" height="142"> <p>Chang Chieh</p>
-<p>class : DEEE/FT/2A/15</p>
-<p>phone no.: 86512759</p>
-<p>email: changchieh.17@ichat.sp.edu.sg</p>
-
-<img src="weichun.jpg" width="104" height="142"> <p>Neo Wei Chun</p>
-<p>class : DEEE/FT/2A/15</p>
-<p>phone no.: 83321136</p>
-<p>email: neoweichun.17@ichat.sp.edu.sg</p>
-
-<img src="caleb.jpg" width="104" height="142"> <p>Caleb Lee</p>
-<p>class : DME/FT/2B/01</p>
-<p>phone no.: 98345330</p>
-<p>email: czlee.17@ichat.sp.edu.sg</p>
-
-<img src="linjie.jpg" width="104" height="142"> <p>Weng Lin Jie</p>
-<p>class : DME/FT/2B/01</p>
-<p>phone no.: 98281696</p>
-<p>email: linjie.17@ichat.sp.edu.sg</p>
 
 </div>
 </div>
