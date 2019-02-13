@@ -25,121 +25,121 @@
 
 <h3>Motor and servo control using remote and IR sensor with Arduino</h3>
 
-<p>
-#include <IRremote.h>
-#include <Servo.h>
 
-const int RECV_PIN = 7;
-IRrecv irrecv(RECV_PIN);
-decode_results results;
-Servo foodServo;
-Servo hookServo;
-int state = 5;
-bool unleashed = false;
-int decode(long hex);
+<p>#include <IRremote.h></p>
+<p>#include <Servo.h></p>
+<p></p>
+<p>const int RECV_PIN = 7;</p>
+<p>IRrecv irrecv(RECV_PIN);</p>
+<p>decode_results results;</p>
+<p>Servo foodServo;</p>
+<p>Servo hookServo;</p>
+<p>int state = 5;</p>
+<p>bool unleashed = false;</p>
+<p>int decode(long hex);</p>
+<p></p>
+<p>void setup(){</p>
+ <p> Serial.begin(9600);</p>
+ <p> irrecv.enableIRIn();</p>
+ <p>irrecv.blink13(true);</p>
+<p></p>
+ <p>pinMode(10, OUTPUT);</p>
+ <p>pinMode(11, OUTPUT);</p>
+ <p>pinMode(5, OUTPUT);</p>
+ <p>pinMode(6, OUTPUT);</p>
+ <p>hookServo.attach(2);</p>
+ <p>hookServo.write(180);</p>
+ <p>foodServo.attach(12);</p>
+ <p>foodServo.write(90); }</p>
+<p></p>
+<p></p>
+<p>void loop(){</p>
+  <p></p>
+ <p> if (irrecv.decode(&results)){</p>
+  <p>  Serial.println(results.value);</p>
+   <p>     if(decode(results.value) != 0){</p>
+   <p>       state = decode(results.value);</p>
+  <p>      }</p>
+  <p>      </p>
+ <p>       irrecv.resume();</p>
+<p>  }</p>
+<p></p>
+<p>  if(state == 5){</p>
+<p>  digitalWrite(10, LOW);</p>
+<p>   digitalWrite(11, LOW);</p>
+<p>   digitalWrite(5, LOW);</p>
+<p>   digitalWrite(6, LOW);</p>
+ <p> } else if(state == 1){</p>
+ <p>   digitalWrite(10, LOW);</p>
+ <p>   digitalWrite(11, LOW);</p>
+ <p>   digitalWrite(5, LOW);</p>
+<p>    digitalWrite(6, LOW);</p>
+ <p>   delay(1000);</p>
+ <p>   foodServo.write(180);</p>
+ <p>   delay(1700);</p>
+ <p>   foodServo.write(90);</p>
+<p>    state = 5;</p>
+<p>  } else if(state == 3){</p>
+<p>    digitalWrite(10, LOW);</p>
+<p>    digitalWrite(11, LOW);</p>
+<p>    digitalWrite(5, LOW);</p>
+ <p>   digitalWrite(6, LOW);</p>
+<p>    delay(1000);</p>
+ <p>   if(!unleashed){</p>
+<p>      hookServo.write(0);</p>
+<p>      unleashed = true;</p>
+<p>      delay(500);</p>
+ <p>   } else {</p>
+ <p>     hookServo.write(180);</p>
+<p>      unleashed = false;</p>
+<p>      delay(500);</p>
+<p>    }</p>
+<p>    state = 5;</p>
+<p>  } else if(state == 2){</p>
+<p>    digitalWrite(10, LOW);</p>
+<p>    digitalWrite(11, HIGH);</p>
+<p>    digitalWrite(5, LOW);</p>
+<p>    digitalWrite(6, HIGH);</p>
+ <p> } else if(state == 6){</p>
+<p>    digitalWrite(10, LOW);</p>
+<p>    digitalWrite(11, HIGH);</p>
+ <p>   digitalWrite(5, HIGH);</p>
+<p>    digitalWrite(6, LOW);</p>
+<p>  } else if(state == 4){</p>
+<p>    digitalWrite(10, HIGH);</p>
+<p>    digitalWrite(11, LOW);</p>
+ <p>   digitalWrite(5, LOW);</p>
+ <p>   digitalWrite(6, HIGH);</p>
+ <p> } else if(state == 8){</p>
+ <p>   digitalWrite(11, LOW);</p>
+ <p>   digitalWrite(10, HIGH);</p>
+<p>    digitalWrite(6, LOW);</p>
+<p>    digitalWrite(5, HIGH);</p>
+<p>  }</p>
+<p>  delay(50);</p>
+<p>}</p>
+<p></p>
+<p>int decode(long hex){</p>
+ <p> switch(hex){</p>
+<p>    case 16582903:</p>
+<p>      return 1;</p>
+<p>    case 16615543:</p>
+<p>      return 2;</p>
+ <p>  case 16599223:</p>
+  <p>    return 3;</p>
+  <p>  case 16591063:</p>
+<p>      return 4;</p>
+ <p>   case 16623703:</p>
+ <p>     return 5;</p>
+ <p>   case 16607383:</p>
+ <p>     return 6;</p>
+<p>    case 16619623:</p>
+<p>      return 8;</p>
+<p>    default:</p>
+ <p>     return 0;</p>
+ <p> }</p>
+<p>}</p>
 
-void setup(){
-  Serial.begin(9600);
-  irrecv.enableIRIn();
-  irrecv.blink13(true);
-
-  pinMode(10, OUTPUT);
-  pinMode(11, OUTPUT);
-  pinMode(5, OUTPUT);
-  pinMode(6, OUTPUT);
-  hookServo.attach(2);
-  hookServo.write(180);
-  foodServo.attach(12);
-  foodServo.write(90);
-}
-
-void loop(){
-  
-  if (irrecv.decode(&results)){
-    Serial.println(results.value);
-        if(decode(results.value) != 0){
-          state = decode(results.value);
-        }
-        
-        irrecv.resume();
-  }
-
-  if(state == 5){
-    digitalWrite(10, LOW);
-    digitalWrite(11, LOW);
-    digitalWrite(5, LOW);
-    digitalWrite(6, LOW);
-  } else if(state == 1){
-    digitalWrite(10, LOW);
-    digitalWrite(11, LOW);
-    digitalWrite(5, LOW);
-    digitalWrite(6, LOW);
-    delay(1000);
-    foodServo.write(180);
-    delay(1700);
-    foodServo.write(90);
-    state = 5;
-  } else if(state == 3){
-    digitalWrite(10, LOW);
-    digitalWrite(11, LOW);
-    digitalWrite(5, LOW);
-    digitalWrite(6, LOW);
-    delay(1000);
-    if(!unleashed){
-      hookServo.write(0);
-      unleashed = true;
-      delay(500);
-    } else {
-      hookServo.write(180);
-      unleashed = false;
-      delay(500);
-    }
-    state = 5;
-  } else if(state == 2){
-    digitalWrite(10, LOW);
-    digitalWrite(11, HIGH);
-    digitalWrite(5, LOW);
-    digitalWrite(6, HIGH);
-  } else if(state == 6){
-    digitalWrite(10, LOW);
-    digitalWrite(11, HIGH);
-    digitalWrite(5, HIGH);
-    digitalWrite(6, LOW);
-  } else if(state == 4){
-    digitalWrite(10, HIGH);
-    digitalWrite(11, LOW);
-    digitalWrite(5, LOW);
-    digitalWrite(6, HIGH);
-  } else if(state == 8){
-    digitalWrite(11, LOW);
-    digitalWrite(10, HIGH);
-    digitalWrite(6, LOW);
-    digitalWrite(5, HIGH);
-  }
-  delay(50);
-}
-
-int decode(long hex){
-  switch(hex){
-    case 16582903:
-      return 1;
-    case 16615543:
-      return 2;
-    case 16599223:
-      return 3;
-    case 16591063:
-      return 4;
-    case 16623703:
-      return 5;
-    case 16607383:
-      return 6;
-    case 16619623:
-      return 8;
-    default:
-      return 0;
-  }
-}
-</p>
 
 <p>Credits to Tan Yuan Pin P1731895 from Group Charlie</p>
 
